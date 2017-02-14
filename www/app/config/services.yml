@@ -17,15 +17,15 @@ services:
         class: Shop\Product\Repository
         arguments: ['@broadway.event_store', '@broadway.event_handling.event_bus']
 
-#    shop.product.read_model.projector:
-#        class: Shop\Product\Projector\ProductProjector
-#        arguments: ['@shop.product.read_model.repository']
-#        tags:
-#            - { name: broadway.domain.event_listener }
-#
-#    shop.product.read_model.repository:
-#        class: 'Broadway\ReadModel\ReadModel'
-#        factory: 'broadway.read_model.elasticsearch.repository_factory:create'
-#        arguments: ['shop.product', 'Shop\Product\ReadModel\Product']
-#        tags:
-#            - { name: read_model_repository }
+    shop.product.read_model.projector:
+        class: Shop\Product\Projector\ProductProjector
+        arguments: ['@shop.product.read_model.repository']
+        tags:
+            - { name: broadway.domain.event_listener }
+
+    shop.product.read_model.repository:
+        class: 'Broadway\ReadModel\ReadModel'
+        factory: 'broadway.read_model.elasticsearch.repository_factory:create'
+        arguments: ['shop.product', 'Shop\Product\ReadModel\Product']
+        tags:
+            - { name: read_model_repository }

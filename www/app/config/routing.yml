@@ -3,3 +3,9 @@ create_product:
     defaults:
         _controller: ApiBundle:Product:create
     methods: [POST]
+
+get_product:
+    path: /products/{id}
+    defaults:
+        _controller: ApiBundle:Product:get
+    methods: [GET]
