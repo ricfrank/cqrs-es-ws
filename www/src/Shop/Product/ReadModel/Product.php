@@ -44,6 +44,16 @@ class Product implements ReadModelInterface, SerializableInterface
     private $createdAt;
 
     /**
+     * @var \DateTimeImmutable
+     */
+    private $updatedAt;
+
+    /**
+     * @var int
+     */
+    private $size;
+
+    /**
      * @return string
      */
     public function getId()
@@ -160,6 +170,10 @@ class Product implements ReadModelInterface, SerializableInterface
         $product->setImageUrl($data['imageUrl']);
         $product->setBrand($data['brand']);
         $product->setCreatedAt(new \DateTimeImmutable($data['createdAt']));
+        $product->setSize($data['size']);
+        if (isset($data['updatedAt'])) {
+            $product->setUpdatedAt(new \DateTimeImmutable($data['updatedAt']));
+        }
 
         return $product;
     }
@@ -173,9 +187,27 @@ class Product implements ReadModelInterface, SerializableInterface
             'productId' => (string)$this->productId,
             'barcode' => $this->barcode,
             'name' => $this->name,
+            'size' => $this->size,
             'imageUrl' => $this->imageUrl,
             'brand' => $this->brand,
-            'createdAt' => $this->createdAt->format('Y-m-d\TH:i:s.uP')
+            'createdAt' => $this->createdAt->format('Y-m-d\TH:i:s.uP'),
+            'updatedAt' => is_null($this->updatedAt) ? null : $this->updatedAt->format('Y-m-d\TH:i:s.uP')
         ];
+    }
+
+    /**
+     * @param \DateTimeImmutable $updatedAt
+     */
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @param int $size
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
     }
 }

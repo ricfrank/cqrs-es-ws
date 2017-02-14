@@ -9,3 +9,9 @@ get_product:
     defaults:
         _controller: ApiBundle:Product:get
     methods: [GET]
+
+update_product:
+    path: /products/{id}
+    defaults:
+        _controller: ApiBundle:Product:update
+    methods: [PATCH]

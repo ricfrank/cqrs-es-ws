@@ -6,6 +6,7 @@ use Broadway\CommandHandling\CommandHandler;
 use Broadway\Repository\RepositoryInterface;
 use Shop\Product\Aggregate\Product;
 use Shop\Product\Command\CreateProduct;
+use Shop\Product\Command\UpdateProduct;
 
 class ProductCommandHandler extends CommandHandler
 {
@@ -22,6 +23,16 @@ class ProductCommandHandler extends CommandHandler
     public function handleCreateProduct(CreateProduct $command)
     {
         $product = Product::create($command);
+
+        $this->repository->save($product);
+    }
+
+    public function handleUpdateProduct(UpdateProduct $command)
+    {
+        /** @var Product $product */
+        $product = $this->repository->load($command->getProductId());
+
+        $product->update($command);
 
         $this->repository->save($product);
     }
