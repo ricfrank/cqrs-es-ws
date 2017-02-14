@@ -1,0 +1,5 @@
+create_product:
+    path: /products
+    defaults:
+        _controller: ApiBundle:Product:create
+    methods: [POST]
