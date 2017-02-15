@@ -29,3 +29,12 @@ services:
         arguments: ['shop.product', 'Shop\Product\ReadModel\Product']
         tags:
             - { name: read_model_repository }
+
+    shop.processor.mailer:
+        class: Shop\Common\Process\Mailer
+        arguments: ['@shop.service.mailer']
+        tags:
+            - { name: broadway.domain.event_listener }
+
+    shop.service.mailer:
+        class: Shop\Common\Service\Mailer
