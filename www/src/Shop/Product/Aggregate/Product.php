@@ -8,12 +8,12 @@ use Shop\Product\Command\CreateProduct;
 use Shop\Product\Command\UpdateProduct;
 use Shop\Product\Event\ProductCreated;
 use Shop\Product\Event\ProductUpdated;
-use Shop\Product\ValueObject\ProductId;
+use Shop\Product\ValueObject\UserId;
 
 class Product extends EventSourcedAggregateRoot
 {
     /**
-     * @var ProductId
+     * @var UserId
      */
     private $productId;
     /**
