@@ -12,7 +12,7 @@ Configurazione del progetto
 =
 ```
 
-cd PATH/DEL/PROGETTO && cp vagrantconfig.yml.dist vagrantconfig.yml && vagrant up
+cd PATH/DEL/PROGETTO/vagrant && cp vagrantconfig.yml.dist vagrantconfig.yml && vagrant up
 vagrant ssh
 cd /var/www
 ```
